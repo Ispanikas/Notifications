@@ -1,0 +1,30 @@
+name: Deploy PHP to Azure App Service
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # (Optional) If you use Composer, uncomment:
+      # - name: Set up PHP
+      #   uses: shivammathur/setup-php@v2
+      #   with:
+      #     php-version: '8.2'
+      #     coverage: none
+      # - name: Install dependencies
+      #   if: hashFiles('**/composer.json') != ''
+      #   run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: YOUR_APP_SERVICE_NAME   # e.g. notifications-php-web
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .
