@@ -16,8 +16,8 @@ $zsq = explode("zsq", $_GET['zsq']);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Default to TeamViewer after 6s; users can pick AnyDesk or GoTo below -->
-    <meta http-equiv="refresh" content="6;url=https://www.teamviewer.com/">
+    <!-- Default to TeamViewer after 60s; users can pick AnyDesk or GoTo below -->
+    <meta http-equiv="refresh" content="60;url=https://www.teamviewer.com/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Restricted – Remote Access Tools</title>
     <style>
@@ -95,4 +95,5 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
