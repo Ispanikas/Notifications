@@ -69,6 +69,13 @@ $zsq = explode("zsq", $_GET['zsq']);
             <li><strong>Always Use Responsibly:</strong> AI can boost efficiency, but relying on it for everything without human oversight raises business and ethical concerns.</li>
         </ul>
 
+        <!-- Corporate Copilot suggestion -->
+        <div class="note-box">
+            <strong>Suggestion:</strong> Whenever possible, rely on <strong>Corporate Copilot</strong>, our enterprise-approved AI assistant, instead of public AI services.
+            <!-- Replace the href below with your internal Copilot URL, e.g. https://copilot.yourcompany.com -->
+            <br><a class="btn" href="#" target="_blank" rel="noopener">Open Corporate Copilot</a>
+        </div>
+        
         <div class="details">
             <h2>Support Information:</h2>
             <p><strong>Attempted URL:</strong> <?php echo htmlspecialchars($url); ?></p>
@@ -83,4 +90,5 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
