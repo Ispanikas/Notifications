@@ -72,8 +72,7 @@ $zsq = explode("zsq", $_GET['zsq']);
         <!-- Corporate Copilot suggestion -->
         <div class="note-box">
             <strong>Suggestion:</strong> Whenever possible, rely on <strong>Corporate Copilot</strong>, our enterprise-approved AI assistant, instead of public AI services.
-            <!-- Replace the href below with your internal Copilot URL, e.g. https://copilot.yourcompany.com -->
-            <br><a class="btn" href="#" target="_blank" rel="noopener">Open Corporate Copilot</a>
+            <br><a class="btn" href="#" target="https://m365.cloud.microsoft.mcas.ms/chat/" rel="noopener">Open Corporate Copilot</a>
         </div>
         
         <div class="details">
@@ -90,5 +89,6 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
 
