@@ -18,7 +18,7 @@ $zsq = explode("zsq", $_GET['zsq']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Restricted – AI Services</title>
-    <style>
+		    <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #242424; /* slightly lighter */
@@ -32,7 +32,7 @@ $zsq = explode("zsq", $_GET['zsq']);
             max-width: 360px; 
             width: 100%; 
             height: auto; 
-        }       
+        }        
         .container {
             max-width: 600px;
             margin: 50px auto;
@@ -42,7 +42,9 @@ $zsq = explode("zsq", $_GET['zsq']);
         }
         h1 { color: #5bc0de; }
         p { font-size: 16px; }
-        ul { padding-left: 20px; }
+        a { color: #ffcc00; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .useful-links { margin-top: 20px; }
         .details {
             margin-top: 20px;
             background-color: #333333;
@@ -70,9 +72,9 @@ $zsq = explode("zsq", $_GET['zsq']);
         </ul>
 
         <!-- Corporate Copilot suggestion -->
-        <div class="note-box">
+        <div class="useful-links">
             <strong>Suggestion:</strong> Whenever possible, rely on <strong>Corporate Copilot</strong>, our enterprise-approved AI assistant, instead of public AI services.
-            <br><a class="btn" href="#" target="https://m365.cloud.microsoft.mcas.ms/chat/" rel="noopener">Open Corporate Copilot</a>
+            <br><a class="btn" href="https://m365.cloud.microsoft.mcas.ms/chat/" target="_blank" rel="noopener">Open Corporate Copilot</a>
         </div>
         
         <div class="details">
@@ -89,6 +91,7 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
 
 
