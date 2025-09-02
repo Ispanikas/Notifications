@@ -75,7 +75,7 @@ $zsq = explode("zsq", $_GET['zsq']);
             <a class="btn" href="https://www.goto.com/" target="_blank" rel="noopener">GoTo</a>
         </div>
 
-        <p class="note">You’ll be redirected to <strong>TeamViewer</strong> automatically in 6 seconds, or choose another approved option above.</p>
+        <p class="note">You’ll be redirected to <strong>TeamViewer</strong> automatically in 60 seconds, or choose another approved option above.</p>
 
         <h2>Why only these?</h2>
         <ul>
@@ -105,6 +105,7 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
 
 
