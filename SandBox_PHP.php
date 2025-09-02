@@ -22,11 +22,18 @@ $zsq = explode("zsq", $_GET['zsq']);
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a;
+            background-color: #242424;
             color: #f0f0f0;
             margin: 0;
             padding: 20px;
         }
+        .logo img { 
+            display: block; 
+            margin: 0 auto 16px; 
+            max-width: 360px; 
+            width: 100%; 
+            height: auto; 
+        }        
         .container {
             max-width: 600px;
             margin: 50px auto;
@@ -53,6 +60,9 @@ $zsq = explode("zsq", $_GET['zsq']);
 </head>
 <body>
     <div class="container">
+        <div class="logo">
+        <img src="CCHBC_2D_Color_Horizontal.png" alt="Coca-Cola HBC logo">
+        </div>
         <h1>Access Restricted – Sandbox URL</h1>
         <p>You're attempting to use a third-party file sandboxing or checking service that is not permitted. To ensure consistent security controls and privacy protection, please use our approved Zscaler FileCheck service.</p>
         <p class="small">You’ll be redirected automatically in 5 seconds.</p>
@@ -65,6 +75,12 @@ $zsq = explode("zsq", $_GET['zsq']);
                 <li>Reduced risk of data exposure to untrusted third parties.</li>
                 <li>Aligned with our Acceptable Use and Data Protection policies.</li>
             </ul>
+        </div>
+
+                <!-- Guide suggestion -->
+        <div class="note-box">
+            <strong>New to FileCheck?</strong> Review the official Zscaler guide on how to use the Sandbox Scanning Portal:
+            <br><a href="https://help.zscaler.com/zia/using-sandbox-scanning-portal" target="_blank" rel="noopener">Using the Sandbox Scanning Portal – ZIA Help</a>
         </div>
 
         <div class="details">
@@ -80,4 +96,5 @@ $zsq = explode("zsq", $_GET['zsq']);
         </div>
     </div>
 </body>
+
 </html>
