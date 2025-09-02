@@ -67,7 +67,7 @@ $zsq = explode("zsq", $_GET['zsq']);
         </div>        
         <h1>Access Restricted – Remote Access Tools (RAT)</h1>
         <p>The tool you attempted to access is not approved. Many public remote access tools have lower security specifics and can expose systems to elevated risk.</p>
-        <p>We allow only the following enterprise-approved solutions:</p>
+        <p>We advise on only the following enterprise-approved solutions:</p>
 
         <div class="grid">
             <a class="btn" href="https://www.teamviewer.com/" target="_blank" rel="noopener">TeamViewer</a>
@@ -105,6 +105,7 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
 
 
