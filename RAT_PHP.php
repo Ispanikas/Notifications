@@ -23,11 +23,18 @@ $zsq = explode("zsq", $_GET['zsq']);
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a;
+            background-color: #242424;
             color: #f0f0f0;
             margin: 0;
             padding: 20px;
         }
+        .logo img { 
+            display: block; 
+            margin: 0 auto 16px; 
+            max-width: 360px; 
+            width: 100%; 
+            height: auto; 
+        }        
         .container {
             max-width: 700px;
             margin: 50px auto;
@@ -55,6 +62,9 @@ $zsq = explode("zsq", $_GET['zsq']);
 </head>
 <body>
     <div class="container">
+        <div class="logo">
+            <img src="CCHBC_2D_Color_Horizontal.png" alt="Coca-Cola HBC logo">
+        </div>        
         <h1>Access Restricted – Remote Access Tools (RAT)</h1>
         <p>The tool you attempted to access is not approved. Many public remote access tools have lower security specifics and can expose systems to elevated risk.</p>
         <p>We allow only the following enterprise-approved solutions:</p>
@@ -95,5 +105,6 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
 
