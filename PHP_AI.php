@@ -21,11 +21,18 @@ $zsq = explode("zsq", $_GET['zsq']);
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a;
+            background-color: #242424; /* slightly lighter */
             color: #f0f0f0;
             margin: 0;
             padding: 20px;
         }
+        .logo img { 
+            display: block; 
+            margin: 0 auto 16px; 
+            max-width: 360px; 
+            width: 100%; 
+            height: auto; 
+        }       
         .container {
             max-width: 600px;
             margin: 50px auto;
@@ -47,6 +54,9 @@ $zsq = explode("zsq", $_GET['zsq']);
 </head>
 <body>
     <div class="container">
+        <div class="logo">
+            <img src="CCHBC_2D_Color_Horizontal.png" alt="Coca-Cola HBC logo">
+        </div>
         <h1>Access Restricted – AI Services</h1>
         <p>You are attempting to access a public generative AI service. Please follow these guidelines to protect privacy, security, and compliance.</p>
 
@@ -73,3 +83,4 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
