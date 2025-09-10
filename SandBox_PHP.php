@@ -16,7 +16,7 @@ $zsq = explode("zsq", $_GET['zsq']);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5;url=https://filecheck.zscaler.com/">
+    <meta http-equiv="refresh" content="60;url=https://filecheck.zscaler.com/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Restricted – Sandbox URLs</title>
     <style>
@@ -68,7 +68,7 @@ $zsq = explode("zsq", $_GET['zsq']);
         </div>
         <h1>Access Restricted – Sandbox URL</h1>
         <p>You're attempting to use a third-party file sandboxing or checking service that is not permitted. To ensure consistent security controls and privacy protection, please use our approved Zscaler FileCheck service.</p>
-        <p class="small">You’ll be redirected automatically in 5 seconds.</p>
+        <p class="small">You’ll be redirected automatically in 60 seconds.</p>
         <a class="cta" href="https://filecheck.zscaler.com/" target="_blank" rel="noopener">Go to Zscaler FileCheck</a>
 
         <div class="useful-links">
@@ -101,4 +101,5 @@ $zsq = explode("zsq", $_GET['zsq']);
 </body>
 
 </html>
+
 
