@@ -35,7 +35,7 @@ $zsq = explode("zsq", $_GET['zsq']);
             height: auto; 
         }        
         .container {
-            max-width: 600px;
+            max-width: 700px;
             margin: 50px auto;
             background-color: #2b2b2b;
             padding: 20px;
@@ -45,17 +45,20 @@ $zsq = explode("zsq", $_GET['zsq']);
         p { font-size: 16px; }
         a { color: #ffcc00; text-decoration: none; }
         a:hover { text-decoration: underline; }
-        .cta {
-            display: inline-block; margin-top: 12px; padding: 10px 16px;
-            background: #5bc0de; color: #1a1a1a; border-radius: 6px; font-weight: 600;
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 12px; }
+        .btn {
+            display: block; text-align: center; padding: 12px 16px; border-radius: 8px; font-weight: 700;
+            background: #5bc0de; color: #1a1a1a;
         }
-        .useful-links { margin-top: 20px; }
+        .note { color: #c8c8c8; font-size: 13px; }
         .details {
+							 
             margin-top: 20px; background-color: #333333;
+						  
             padding: 10px; border: 1px solid #444444;
         }
         .details p { font-size: 14px; margin: 5px 0; }
-        .small { color: #c8c8c8; font-size: 13px; }
+        ul { padding-left: 20px; }
     </style>
 </head>
 <body>
@@ -98,3 +101,4 @@ $zsq = explode("zsq", $_GET['zsq']);
 </body>
 
 </html>
+
