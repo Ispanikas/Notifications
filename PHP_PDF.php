@@ -21,7 +21,7 @@ $zsq = explode("zsq", $_GET['zsq']);
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #242424; /* slightly lighter */
+            background-color: #242424;
             color: #f0f0f0;
             margin: 0;
             padding: 20px;
@@ -34,7 +34,7 @@ $zsq = explode("zsq", $_GET['zsq']);
             height: auto; 
         }        
         .container {
-            max-width: 600px;
+            max-width: 700px;
             margin: 50px auto;
             background-color: #2b2b2b;
             padding: 20px;
@@ -44,14 +44,20 @@ $zsq = explode("zsq", $_GET['zsq']);
         p { font-size: 16px; }
         a { color: #ffcc00; text-decoration: none; }
         a:hover { text-decoration: underline; }
-        .useful-links { margin-top: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 12px; }
+        .btn {
+            display: block; text-align: center; padding: 12px 16px; border-radius: 8px; font-weight: 700;
+            background: #5bc0de; color: #1a1a1a;
+        }
+        .note { color: #c8c8c8; font-size: 13px; }
         .details {
-            margin-top: 20px;
-            background-color: #333333;
-            padding: 10px;
-            border: 1px solid #444444;
+							 
+            margin-top: 20px; background-color: #333333;
+						  
+            padding: 10px; border: 1px solid #444444;
         }
         .details p { font-size: 14px; margin: 5px 0; }
+        ul { padding-left: 20px; }
     </style>
 </head>
 <body>
@@ -94,4 +100,5 @@ $zsq = explode("zsq", $_GET['zsq']);
 </body>
 
 </html>
+
 
