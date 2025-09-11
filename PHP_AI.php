@@ -89,21 +89,10 @@ $zsq = explode("zsq", $_GET['zsq']);
                 <input type="hidden" name="_sm_cat" value="<?php $_GET['cat'];?>">
                 <input type="submit" value="Continue" id="submitButton">
             </form> 
-
-        <div class="details">
-            <h2>Support Information:</h2>
-            <p><strong>Attempted URL:</strong> <?php echo htmlspecialchars($url); ?></p>
-            <p><strong>Reason:</strong> <?php echo htmlspecialchars($reason); ?> (<?php echo htmlspecialchars($reason_code); ?>)</p>
-            <p><strong>Action Taken:</strong> <?php echo htmlspecialchars($action); ?></p>
-            <p><strong>Category:</strong> <?php echo htmlspecialchars($cat); ?></p>
-            <p><strong>Rule:</strong> <?php echo htmlspecialchars($rule); ?></p>
-            <p><strong>User:</strong> <?php echo htmlspecialchars($user); ?></p>
-            <p><strong>Referer:</strong> <?php echo htmlspecialchars($referer); ?></p>
-            <p><strong>Time-bound:</strong> <?php echo htmlspecialchars($timebound); ?></p>
-        </div>
     </div>
 </body>
 </html>
+
 
 
 
