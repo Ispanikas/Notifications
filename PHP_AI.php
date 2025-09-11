@@ -83,6 +83,34 @@ $zsq = explode("zsq", $_GET['zsq']);
             <br><a class="btn" href="https://m365.cloud.microsoft.mcas.ms/chat/" target="_blank" rel="noopener">Open Corporate Copilot</a>
         </div>
 
+					<?php
+			// grab and sanitize your GET parameters
+			$url = $_GET['url'] ?? '';
+			$zsq = $_GET['zsq'] ?? '';
+			$cat = $_GET['cat'] ?? '';
+			
+			// split off everything before the first occurrence of "zsq"
+			// explode() returns an array; the RID is in index 1 if "zsq" was present
+			$parts = explode('zsq', $zsq, 2);
+			$rid   = $parts[1] ?? '';   // if no "zsq" was found, default to empty
+			
+			// now escape for safe output in attributes
+			$urlEsc = htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
+			$ridEsc = htmlspecialchars($rid, ENT_QUOTES, 'UTF-8');
+			$catEsc = htmlspecialchars($cat, ENT_QUOTES, 'UTF-8');
+			?>
+			<form id="continue_action"
+			      method="GET"
+			      action="https://gateway.zscaler.net:443/_sm_ctn">
+			    <input type="hidden" name="_sm_url" value="<?= $urlEsc ?>">
+			    <input type="hidden" name="_sm_rid" value="<?= $ridEsc ?>">
+			    <input type="hidden" name="_sm_cat" value="<?= $catEsc ?>">
+			    <input class="btn"
+			           type="submit"
+			           value="Continue to previous destination"
+			           id="submitButton">
+			</form>
+
         <div class="details">
             <h2>Support Information:</h2>
             <p><strong>Attempted URL:</strong> <?php echo htmlspecialchars($url); ?></p>
@@ -98,6 +126,7 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
 
 
