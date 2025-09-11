@@ -84,11 +84,11 @@ $zsq = explode("zsq", $_GET['zsq']);
         </div>
 
 		<form id="continue_action" method="GET" action="https://gateway.zscaler.net:443/_sm_ctn">
-		    <input type="hidden" name="_sm_url"   value="<?php echo $_GET['url']; ?>">
-		    <input type="hidden" name="_sm_rid"   value="<?php echo $zsq[1]; ?>">
-		    <input type="hidden" name="_sm_cat"   value="<?php echo $_GET['cat']; ?>">
-		    <input type="submit"        value="Continue" id="submitButton">
-		</form>
+		                <input type="hidden" name="_sm_url" value="<?php $_GET['url'];?>">
+		                <input type="hidden" name="_sm_rid" value="<?php split('zsq', $_GET['zsq']);?>">
+		                <input type="hidden" name="_sm_cat" value="<?php $_GET['cat'];?>">
+		                <input type="submit" value="Continue" id="submitButton class="btn"">
+		            </form> 
 		
         <div class="details">
             <h2>Support Information:</h2>
@@ -105,6 +105,7 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
 
 
