@@ -82,16 +82,23 @@ $zsq = explode("zsq", $_GET['zsq']);
             <strong>Suggestion:</strong> Whenever possible, rely on <strong>Corporate Copilot</strong>, our enterprise-approved AI assistant, instead of public AI services.
             <br><a class="btn" href="https://m365.cloud.microsoft.mcas.ms/chat/" target="_blank" rel="noopener">Open Corporate Copilot</a>
         </div>
-        
-	       <form id="continue_action" method="GET" action="https://gateway.zscaler.net:443/_sm_ctn">
-                <input type="hidden" name="_sm_url" value="<?php $_GET['url'];?>">
-                <input type="hidden" name="_sm_rid" value="<?php split('zsq', $_GET['zsq']);?>">
-                <input type="hidden" name="_sm_cat" value="<?php $_GET['cat'];?>">
-                <input type="submit" value="Continue" id="submitButton">
-            </form> 
+
+        <div class="details">
+            <h2>Support Information:</h2>
+            <p><strong>Attempted URL:</strong> <?php echo htmlspecialchars($url); ?></p>
+            <p><strong>Reason:</strong> <?php echo htmlspecialchars($reason); ?> (<?php echo htmlspecialchars($reason_code); ?>)</p>
+            <p><strong>Action Taken:</strong> <?php echo htmlspecialchars($action); ?></p>
+            <p><strong>Category:</strong> <?php echo htmlspecialchars($cat); ?></p>
+            <p><strong>Rule:</strong> <?php echo htmlspecialchars($rule); ?></p>
+            <p><strong>User:</strong> <?php echo htmlspecialchars($user); ?></p>
+            <p><strong>Referer:</strong> <?php echo htmlspecialchars($referer); ?></p>
+            <p><strong>Time-bound:</strong> <?php echo htmlspecialchars($timebound); ?></p>
+        </div>
+
     </div>
 </body>
 </html>
+
 
 
 
