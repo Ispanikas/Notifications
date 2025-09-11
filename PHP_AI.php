@@ -46,6 +46,10 @@ $zsq = explode("zsq", $_GET['zsq']);
         a:hover { text-decoration: underline; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 12px; }
         .note { color: #c8c8c8; font-size: 13px; }
+		.btn {
+            display: block; text-align: center; padding: 12px 16px; border-radius: 8px; font-weight: 700;
+            background: #5bc0de; color: #1a1a1a;
+        }
         .details {
 							 
             margin-top: 20px; background-color: #333333;
@@ -100,6 +104,7 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
 
 
