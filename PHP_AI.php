@@ -83,11 +83,11 @@ $zsq = explode("zsq", $_GET['zsq']);
             <br><a class="btn" href="https://m365.cloud.microsoft.mcas.ms/chat/" target="_blank" rel="noopener">Open Corporate Copilot</a>
         </div>
 
-		<form id="continue_action" method="GET" action="https://gateway.<Zscaler cloud>:443/_sm_ctn">
-		    <input type="hidden" name="_sm_url" value="<?php echo $_GET['url']; ?>">
-		    <input type="hidden" name="_sm_rid" value="<?php echo explode('zsq', $_GET['zsq'])[1]; ?>">
-		    <input type="hidden" name="_sm_cat" value="<?php echo $_GET['cat']; ?>">
-		    <input type="submit" value="Continue" id="submitButton">
+		<form id="continue_action" method="GET" action="https://gateway.zscaler.net:443/_sm_ctn">
+		    <input type="hidden" name="_sm_url"   value="<?php echo $_GET['url']; ?>">
+		    <input type="hidden" name="_sm_rid"   value="<?php echo $zsq[1]; ?>">
+		    <input type="hidden" name="_sm_cat"   value="<?php echo $_GET['cat']; ?>">
+		    <input type="submit"        value="Continue" id="submitButton">
 		</form>
 		
         <div class="details">
@@ -105,6 +105,7 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
 
 
