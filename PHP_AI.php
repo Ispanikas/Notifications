@@ -45,10 +45,6 @@ $zsq = explode("zsq", $_GET['zsq']);
         a { color: #ffcc00; text-decoration: none; }
         a:hover { text-decoration: underline; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 12px; }
-        .btn {
-            display: block; text-align: center; padding: 12px 16px; border-radius: 8px; font-weight: 700;
-            background: #5bc0de; color: #1a1a1a;
-        }
         .note { color: #c8c8c8; font-size: 13px; }
         .details {
 							 
@@ -83,7 +79,7 @@ $zsq = explode("zsq", $_GET['zsq']);
             <br><a class="btn" href="https://m365.cloud.microsoft.mcas.ms/chat/" target="_blank" rel="noopener">Open Corporate Copilot</a>
         </div>
         
-        <form id="continue_action" method="GET" action="https://gateway.zscaler.net:443/_sm_ctn">
+	       <form id="continue_action" method="GET" action="https://gateway.zscaler.net:443/_sm_ctn">
                 <input type="hidden" name="_sm_url" value="<?php $_GET['url'];?>">
                 <input type="hidden" name="_sm_rid" value="<?php split('zsq', $_GET['zsq']);?>">
                 <input type="hidden" name="_sm_cat" value="<?php $_GET['cat'];?>">
@@ -104,6 +100,7 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
 
 
