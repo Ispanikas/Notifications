@@ -83,37 +83,13 @@ $zsq = explode("zsq", $_GET['zsq']);
             <br><a class="btn" href="https://m365.cloud.microsoft.mcas.ms/chat/" target="_blank" rel="noopener">Open Corporate Copilot</a>
         </div>
 
-		<?php
-		// grab & sanitize
-		$zsq = $_GET['zsq'] ?? '';
-		
-		// assume prefix is exactly "zsq" (lowercase) and remove it:
-		if (str_starts_with($zsq, 'zsq')) {
-		    // remove the first 3 chars
-		    $rid = substr($zsq, 3);
-		} else {
-		    // fallback if no prefix
-		    $rid = $zsq;
-		}
-		
-		// escape for HTML output
-		$ridEsc = htmlspecialchars($rid, ENT_QUOTES, 'UTF-8');
-		$urlEsc = htmlspecialchars($_GET['url'] ?? '', ENT_QUOTES, 'UTF-8');
-		$catEsc = htmlspecialchars($_GET['cat'] ?? '', ENT_QUOTES, 'UTF-8');
-		?>
-		<form id="continue_action"
-		      method="GET"
-		      action="https://gateway.zscaler.net:443/_sm_ctn">
-		    <input type="hidden" name="_sm_url" value="<?= $urlEsc ?>">
-		    <input type="hidden" name="_sm_rid" value="<?= $ridEsc ?>">
-		    <input type="hidden" name="_sm_cat" value="<?= $catEsc ?>">
-		    <input class="btn"
-		           type="submit"
-		           value="Continue to previous destination"
-		           id="submitButton">
+		<form id="continue_action" method="GET" action="https://gateway.<Zscaler cloud>:443/_sm_ctn">
+		    <input type="hidden" name="_sm_url" value="<?php echo $_GET['url']; ?>">
+		    <input type="hidden" name="_sm_rid" value="<?php echo explode('zsq', $_GET['zsq'])[1]; ?>">
+		    <input type="hidden" name="_sm_cat" value="<?php echo $_GET['cat']; ?>">
+		    <input type="submit" value="Continue" id="submitButton">
 		</form>
-
-
+		
         <div class="details">
             <h2>Support Information:</h2>
             <p><strong>Attempted URL:</strong> <?php echo htmlspecialchars($url); ?></p>
@@ -129,6 +105,7 @@ $zsq = explode("zsq", $_GET['zsq']);
     </div>
 </body>
 </html>
+
 
 
 
