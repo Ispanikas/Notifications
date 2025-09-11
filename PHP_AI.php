@@ -83,7 +83,7 @@ $zsq = explode("zsq", $_GET['zsq']);
                 <input type="hidden" name="_sm_url" value="<?php $_GET['url'];?>">
                 <input type="hidden" name="_sm_rid" value="<?php split('zsq', $_GET['zsq']);?>">
                 <input type="hidden" name="_sm_cat" value="<?php $_GET['cat'];?>">
-                <input class="btn" type="submit" value="Continue to previous destination" id="submitButton">
+                <input type="submit" value="Continue" id="submitButton">
             </form> 
 
         <div class="details">
