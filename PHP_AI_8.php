@@ -17,7 +17,7 @@ $zsq_raw     = $_GET['zsq']         ?? '';
 
 // Derive RID from zsq by stripping the trailing (or leading) "zsq" marker
 // Example given: "vv1N...vM zsq"  -> "vv1N...vM"
-$rid = $zsq_raw !== '' ? explode('zsq', $zsq_raw)[0] : '';
+$rid = $zsq_raw;  // keep it as-is
 
 // Helper to safely escape for HTML attributes/text
 $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
@@ -89,3 +89,4 @@ $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
     </div>
 </body>
 </html>
+
