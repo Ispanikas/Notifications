@@ -1,26 +1,30 @@
 <?php
 declare(strict_types=1);
 
-// Read incoming params (use empty string if missing)
-$url         = $_GET['url']         ?? '';
+/**
+ * Set this to your tenant's Zscaler cloud domain:
+ *   Examples: 'zscaler.net', 'zscloud.net', 'zscalerone.net', 'zscalertwo.net', 'zscalerthree.net'
+ * If you prefer, set an env var ZSCALER_CLOUD and it'll use that instead.
+ */
+$zscalerCloud = getenv('ZSCALER_CLOUD') ?: 'zscaler.net';
+
+/* ---- Read incoming params (all optional) ---- */
+$targetUrl   = isset($_GET['url']) ? rawurldecode((string)$_GET['url']) : ''; // decode to avoid double-encoding on form submit
 $referer     = $_GET['referer']     ?? '';
 $reason      = $_GET['reason']      ?? '';
 $reason_code = $_GET['reasoncode']  ?? '';
 $timebound   = $_GET['timebound']   ?? '';
-$action      = $_GET['action']      ?? '';
+$actionTaken = $_GET['action']      ?? '';
 $kind        = $_GET['kind']        ?? '';
 $rule        = $_GET['rule']        ?? '';
 $cat         = $_GET['cat']         ?? '';
 $user        = $_GET['user']        ?? '';
 $lang        = $_GET['lang']        ?? '';
-$zsq_raw     = $_GET['zsq']         ?? '';
+$rid         = $_GET['zsq']         ?? ''; // IMPORTANT: send back exactly as received (do NOT strip 'zsq')
 
-// Derive RID from zsq by stripping the trailing (or leading) "zsq" marker
-// Example given: "vv1N...vM zsq"  -> "vv1N...vM"
-$rid = $zsq_raw;  // keep it as-is
-
-// Helper to safely escape for HTML attributes/text
+/* ---- Helpers ---- */
 $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
+$formAction = "https://gateway.$zscalerCloud:443/_sm_ctn";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +53,6 @@ $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
         <div class="logo">
             <img src="CCHBC_2D_Color_Horizontal.png" alt="Coca-Cola HBC logo">
         </div>
-
         <h1>Access Restricted – AI Services</h1>
         <p>You are attempting to access a public generative AI service. Please follow these guidelines to protect privacy, security, and compliance.</p>
 
@@ -68,18 +71,18 @@ $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
         </div>
 
         <!-- Zscaler Continue -->
-        <form id="continue_action" method="GET" action="https://gateway.zscaler.net:443/_sm_ctn">
-            <input type="hidden" name="_sm_url" value="<?= $e($url) ?>">
+        <form id="continue_action" method="GET" action="<?= $e($formAction) ?>">
+            <input type="hidden" name="_sm_url" value="<?= $e($targetUrl) ?>">
             <input type="hidden" name="_sm_rid" value="<?= $e($rid) ?>">
             <input type="hidden" name="_sm_cat" value="<?= $e($cat) ?>">
-            <input type="submit" value="Continue" id="submitButton" class="btn">
+            <button type="submit" class="btn" id="submitButton">Continue</button>
         </form>
 
         <div class="details">
             <h2>Support Information:</h2>
-            <p><strong>Attempted URL:</strong> <?= $e($url) ?></p>
+            <p><strong>Attempted URL:</strong> <?= $e($targetUrl) ?></p>
             <p><strong>Reason:</strong> <?= $e($reason) ?> (<?= $e($reason_code) ?>)</p>
-            <p><strong>Action Taken:</strong> <?= $e($action) ?></p>
+            <p><strong>Action Taken:</strong> <?= $e($actionTaken) ?></p>
             <p><strong>Category:</strong> <?= $e($cat) ?></p>
             <p><strong>Rule:</strong> <?= $e($rule) ?></p>
             <p><strong>User:</strong> <?= $e($user) ?></p>
@@ -89,4 +92,3 @@ $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
     </div>
 </body>
 </html>
-
