@@ -1,26 +1,17 @@
 <?php
-declare(strict_types=1);
-
-// Read incoming params (use empty string if missing)
-$url         = $_GET['url']         ?? '';
-$referer     = $_GET['referer']     ?? '';
-$reason      = $_GET['reason']      ?? '';
-$reason_code = $_GET['reasoncode']  ?? '';
-$timebound   = $_GET['timebound']   ?? '';
-$action      = $_GET['action']      ?? '';
-$kind        = $_GET['kind']        ?? '';
-$rule        = $_GET['rule']        ?? '';
-$cat         = $_GET['cat']         ?? '';
-$user        = $_GET['user']        ?? '';
-$lang        = $_GET['lang']        ?? '';
-$zsq_raw     = $_GET['zsq']         ?? '';
-
-// Derive RID from zsq by stripping the trailing (or leading) "zsq" marker
-// Example given: "vv1N...vM zsq"  -> "vv1N...vM"
-$rid = $zsq_raw !== '' ? explode('zsq', $zsq_raw)[0] : '';
-
-// Helper to safely escape for HTML attributes/text
-$e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
+// ---- Read incoming params (optional, avoid notices in PHP 8) ----
+$url         = $_GET['url']        ?? '';
+$referer     = $_GET['referer']    ?? '';
+$reason      = $_GET['reason']     ?? '';
+$reason_code = $_GET['reasoncode'] ?? '';
+$timebound   = $_GET['timebound']  ?? '';
+$action      = $_GET['action']     ?? '';
+$kind        = $_GET['kind']       ?? '';
+$rule        = $_GET['rule']       ?? '';
+$cat         = $_GET['cat']        ?? '';
+$user        = $_GET['user']       ?? '';
+$lang        = $_GET['lang']       ?? '';
+$zsq         = $_GET['zsq']        ?? ''; // IMPORTANT: pass back as-is (no split)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,16 +20,41 @@ $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Restricted – AI Services</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #242424; color: #f0f0f0; margin: 0; padding: 20px; }
-        .logo img { display: block; margin: 0 auto 16px; max-width: 360px; width: 100%; height: auto; }
-        .container { max-width: 700px; margin: 50px auto; background-color: #2b2b2b; padding: 20px; box-shadow: 0 0 15px rgba(0,0,0,.5); }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #242424;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .logo img { 
+            display: block; 
+            margin: 0 auto 16px; 
+            max-width: 360px; 
+            width: 100%; 
+            height: auto; 
+        }        
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #2b2b2b;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
         h1 { color: #5bc0de; }
         p { font-size: 16px; }
-        a { color: #ffcc00; text-decoration: none; } a:hover { text-decoration: underline; }
+        a { color: #ffcc00; text-decoration: none; }
+        a:hover { text-decoration: underline; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 12px; }
         .note { color: #c8c8c8; font-size: 13px; }
-        .btn { display: inline-block; text-align: center; padding: 12px 16px; border-radius: 8px; font-weight: 700; background: #5bc0de; color: #1a1a1a; border: 0; cursor: pointer; }
-        .details { margin-top: 20px; background-color: #333333; padding: 10px; border: 1px solid #444444; }
+        .btn {
+            display: inline-block; text-align: center; padding: 12px 16px; border-radius: 8px; font-weight: 700;
+            background: #5bc0de; color: #1a1a1a; border: 0; cursor: pointer;
+        }
+        .details {
+            margin-top: 20px; background-color: #333333;
+            padding: 10px; border: 1px solid #444444;
+        }
         .details p { font-size: 14px; margin: 5px 0; }
         ul { padding-left: 20px; }
         form { margin-top: 16px; }
@@ -49,43 +65,46 @@ $e = fn($s) => htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8');
         <div class="logo">
             <img src="CCHBC_2D_Color_Horizontal.png" alt="Coca-Cola HBC logo">
         </div>
-
         <h1>Access Restricted – AI Services</h1>
         <p>You are attempting to access a public generative AI service. Please follow these guidelines to protect privacy, security, and compliance.</p>
 
         <h2>Responsible AI Use Guidelines</h2>
         <ul>
             <li><strong>Always Think Privacy & Cyber-Security:</strong> Public AI platforms are public spaces. <em>Never</em> provide confidential company data or sensitive information.</li>
-            <li><strong>Always Check the Quality:</strong> Validate AI outputs before using them.</li>
-            <li><strong>Always Think Compliance:</strong> Inputs may be reused by the platform; share responsibly.</li>
-            <li><strong>Always Label the Source of Data:</strong> Disclose AI assistance (e.g., “generated by use of ChatGPT”).</li>
+            <li><strong>Always Check the Quality:</strong> AI outputs can be incomplete or incorrect. Validate all results before using them.</li>
+            <li><strong>Always Think Compliance:</strong> Generative AI platforms learn from user inputs. Share responsibly.</li>
+            <li><strong>Always Label the Source of Data:</strong> If AI assisted your work, disclose it (e.g., “generated by use of ChatGPT”).</li>
             <li><strong>Always Use Responsibly:</strong> Keep human oversight in the loop.</li>
         </ul>
 
         <div class="useful-links">
-            <strong>Suggestion:</strong> Prefer <strong>Corporate Copilot</strong>, our enterprise-approved AI assistant.
+            <strong>Suggestion:</strong> Whenever possible, rely on <strong>Corporate Copilot</strong>, our enterprise-approved AI assistant, instead of public AI services.
             <br><a class="btn" href="https://m365.cloud.microsoft.mcas.ms/chat/" target="_blank" rel="noopener">Open Corporate Copilot</a>
         </div>
 
-        <!-- Zscaler Continue -->
+        <!-- Continue form: echo back values exactly as received -->
         <form id="continue_action" method="GET" action="https://gateway.zscaler.net:443/_sm_ctn">
-            <input type="hidden" name="_sm_url" value="<?= $e($url) ?>">
-            <input type="hidden" name="_sm_rid" value="<?= $e($rid) ?>">
-            <input type="hidden" name="_sm_cat" value="<?= $e($cat) ?>">
+            <input type="hidden" name="_sm_url" value="<?=
+                htmlspecialchars($url, ENT_QUOTES, 'UTF-8') ?>">
+            <input type="hidden" name="_sm_rid" value="<?=
+                htmlspecialchars($zsq, ENT_QUOTES, 'UTF-8') ?>">
+            <input type="hidden" name="_sm_cat" value="<?=
+                htmlspecialchars($cat, ENT_QUOTES, 'UTF-8') ?>">
             <input type="submit" value="Continue" id="submitButton" class="btn">
-        </form>
-
+        </form> 
+        
         <div class="details">
             <h2>Support Information:</h2>
-            <p><strong>Attempted URL:</strong> <?= $e($url) ?></p>
-            <p><strong>Reason:</strong> <?= $e($reason) ?> (<?= $e($reason_code) ?>)</p>
-            <p><strong>Action Taken:</strong> <?= $e($action) ?></p>
-            <p><strong>Category:</strong> <?= $e($cat) ?></p>
-            <p><strong>Rule:</strong> <?= $e($rule) ?></p>
-            <p><strong>User:</strong> <?= $e($user) ?></p>
-            <p><strong>Referer:</strong> <?= $e($referer) ?></p>
-            <p><strong>Time-bound:</strong> <?= $e($timebound) ?></p>
+            <p><strong>Attempted URL:</strong> <?= htmlspecialchars($url) ?></p>
+            <p><strong>Reason:</strong> <?= htmlspecialchars($reason) ?> (<?= htmlspecialchars($reason_code) ?>)</p>
+            <p><strong>Action Taken:</strong> <?= htmlspecialchars($action) ?></p>
+            <p><strong>Category:</strong> <?= htmlspecialchars($cat) ?></p>
+            <p><strong>Rule:</strong> <?= htmlspecialchars($rule) ?></p>
+            <p><strong>User:</strong> <?= htmlspecialchars($user) ?></p>
+            <p><strong>Referer:</strong> <?= htmlspecialchars($referer) ?></p>
+            <p><strong>Time-bound:</strong> <?= htmlspecialchars($timebound) ?></p>
         </div>
+
     </div>
 </body>
 </html>
