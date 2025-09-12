@@ -31,7 +31,7 @@ $formAction = "https://gateway.$zscalerCloud:443/_sm_ctn";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Restricted – AI Services</title>
+    <title>Access Restricted – AI Services II</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #242424; color: #f0f0f0; margin: 0; padding: 20px; }
         .logo img { display: block; margin: 0 auto 16px; max-width: 360px; width: 100%; height: auto; }
@@ -92,3 +92,4 @@ $formAction = "https://gateway.$zscalerCloud:443/_sm_ctn";
     </div>
 </body>
 </html>
+
