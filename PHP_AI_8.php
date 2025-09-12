@@ -1,5 +1,5 @@
 <?php
-// ---- Read incoming params (optional, avoid notices in PHP 8) ----
+// --- Your original decoded values (for display only) ---
 $url         = $_GET['url']        ?? '';
 $referer     = $_GET['referer']    ?? '';
 $reason      = $_GET['reason']     ?? '';
@@ -11,7 +11,18 @@ $rule        = $_GET['rule']       ?? '';
 $cat         = $_GET['cat']        ?? '';
 $user        = $_GET['user']       ?? '';
 $lang        = $_GET['lang']       ?? '';
-$zsq         = $_GET['zsq']        ?? ''; // IMPORTANT: pass back as-is (no split)
+
+// --- NEW: grab the RAW (not decoded) values exactly as Zscaler sent them ---
+$qs = $_SERVER['QUERY_STRING'] ?? '';
+$rawParam = function(string $name) use ($qs): string {
+    return preg_match('/(?:^|&)' . preg_quote($name, '/') . '=([^&]*)/i', $qs, $m) ? $m[1] : '';
+};
+$raw_url = $rawParam('url');   // e.g. https%3a%2f%2fchatgpt%2ecom%2f  (keep as-is!)
+$raw_cat = $rawParam('cat');   // e.g. Generative+AI+and+ML+Applications
+$raw_rid = $rawParam('zsq');   // e.g. MHjsVtF...zsq  (keep trailing "zsq")
+
+// Build the exact continue URL (no re-encoding, no transforms)
+$continueHref = "https://gateway.zscaler.net:443/_sm_ctn?_sm_url={$raw_url}&_sm_rid={$raw_rid}&_sm_cat={$raw_cat}";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +68,7 @@ $zsq         = $_GET['zsq']        ?? ''; // IMPORTANT: pass back as-is (no spli
         }
         .details p { font-size: 14px; margin: 5px 0; }
         ul { padding-left: 20px; }
-        form { margin-top: 16px; }
+        .actions { margin-top: 16px; }
     </style>
 </head>
 <body>
@@ -82,27 +93,21 @@ $zsq         = $_GET['zsq']        ?? ''; // IMPORTANT: pass back as-is (no spli
             <br><a class="btn" href="https://m365.cloud.microsoft.mcas.ms/chat/" target="_blank" rel="noopener">Open Corporate Copilot</a>
         </div>
 
-        <!-- Continue form: echo back values exactly as received -->
-        <form id="continue_action" method="GET" action="https://gateway.zscaler.net:443/_sm_ctn">
-            <input type="hidden" name="_sm_url" value="<?=
-                htmlspecialchars($url, ENT_QUOTES, 'UTF-8') ?>">
-            <input type="hidden" name="_sm_rid" value="<?=
-                htmlspecialchars($zsq, ENT_QUOTES, 'UTF-8') ?>">
-            <input type="hidden" name="_sm_cat" value="<?=
-                htmlspecialchars($cat, ENT_QUOTES, 'UTF-8') ?>">
-            <input type="submit" value="Continue" id="submitButton" class="btn">
-        </form> 
-        
+        <!-- Continue: send bytes back EXACTLY as received (no form, no re-encoding) -->
+        <div class="actions">
+            <a id="submitButton" class="btn" href="<?= htmlspecialchars($continueHref, ENT_QUOTES, 'UTF-8') ?>">Continue</a>
+        </div>
+
         <div class="details">
             <h2>Support Information:</h2>
-            <p><strong>Attempted URL:</strong> <?= htmlspecialchars($url) ?></p>
-            <p><strong>Reason:</strong> <?= htmlspecialchars($reason) ?> (<?= htmlspecialchars($reason_code) ?>)</p>
-            <p><strong>Action Taken:</strong> <?= htmlspecialchars($action) ?></p>
-            <p><strong>Category:</strong> <?= htmlspecialchars($cat) ?></p>
-            <p><strong>Rule:</strong> <?= htmlspecialchars($rule) ?></p>
-            <p><strong>User:</strong> <?= htmlspecialchars($user) ?></p>
-            <p><strong>Referer:</strong> <?= htmlspecialchars($referer) ?></p>
-            <p><strong>Time-bound:</strong> <?= htmlspecialchars($timebound) ?></p>
+            <p><strong>Attempted URL:</strong> <?= htmlspecialchars($url, ENT_QUOTES, 'UTF-8') ?></p>
+            <p><strong>Reason:</strong> <?= htmlspecialchars($reason, ENT_QUOTES, 'UTF-8') ?> (<?= htmlspecialchars($reason_code, ENT_QUOTES, 'UTF-8') ?>)</p>
+            <p><strong>Action Taken:</strong> <?= htmlspecialchars($action, ENT_QUOTES, 'UTF-8') ?></p>
+            <p><strong>Category:</strong> <?= htmlspecialchars($cat, ENT_QUOTES, 'UTF-8') ?></p>
+            <p><strong>Rule:</strong> <?= htmlspecialchars($rule, ENT_QUOTES, 'UTF-8') ?></p>
+            <p><strong>User:</strong> <?= htmlspecialchars($user, ENT_QUOTES, 'UTF-8') ?></p>
+            <p><strong>Referer:</strong> <?= htmlspecialchars($referer, ENT_QUOTES, 'UTF-8') ?></p>
+            <p><strong>Time-bound:</strong> <?= htmlspecialchars($timebound, ENT_QUOTES, 'UTF-8') ?></p>
         </div>
 
     </div>
