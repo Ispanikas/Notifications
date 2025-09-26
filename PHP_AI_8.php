@@ -92,7 +92,7 @@ $rid     = implode('zsq', explode('zsq', $rid_raw)); // normalizes string if nee
 
         <!-- Zscaler "Continue" action -->
         <!-- If your cloud uses a different host, update gateway.zscaler.net below -->
-        <form id="continue_action" method="GET" action="https://gateway.zscaler.net:443/_sm_ctn">
+        <form id="continue_action" method="GET" action="https://gateway.zscalerbeta.net:443/_sm_ctn">
             <input type="hidden" name="_sm_url" value="<?php echo $e($url); ?>">
             <input type="hidden" name="_sm_rid" value="<?php echo $e($rid); ?>">
             <input type="hidden" name="_sm_cat" value="<?php echo $e($cat); ?>">
@@ -113,3 +113,4 @@ $rid     = implode('zsq', explode('zsq', $rid_raw)); // normalizes string if nee
     </div>
 </body>
 </html>
+
