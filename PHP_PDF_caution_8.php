@@ -77,7 +77,7 @@ $zsq = isset($_GET['zsq']) ? explode("zsq", $_GET['zsq']) : [];
             </ul>
         </div>
 
-        <form id="continue_action" method="GET" action="https://gateway.zscaler.net:443/_sm_ctn">
+        <form id="continue_action" method="GET" action="https://gateway.zscalerbeta.net:443/_sm_ctn">
                 <!-- Safely echo GET values -->
                 <input type="hidden" name="_sm_url" value="<?php echo htmlspecialchars($url); ?>">
                 <input type="hidden" name="_sm_rid" value="<?php echo htmlspecialchars(implode('zsq', $zsq)); ?>">
