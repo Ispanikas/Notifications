@@ -17,7 +17,7 @@ $zsq = explode("zsq", $_GET['zsq']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Restricted – PDF Editing</title>
+    <title>Access Restricted – PDF/Document Editing</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -66,8 +66,8 @@ $zsq = explode("zsq", $_GET['zsq']);
             <img src="CCHBC_2D_Color_Horizontal.png" alt="Coca-Cola HBC logo">
         </div>        
         <h1>Access Restricted</h1>
-        <p>It appears you're trying to access an online PDF editing service that isn't permitted by our policies. Using such services can pose security risks, including the potential exposure of sensitive data to third-party platforms that may not meet our security standards.</p>
-        <p>To ensure your data remains protected and complies with our Acceptable Use Policy, please use trusted and secure tools like Adobe Acrobat or Microsoft Word for PDF editing. These tools work locally and help minimize the risk of unauthorized access or data leakage.</p>
+        <p>It appears you're trying to access an online PDF/Document editing service that isn't permitted by our policies. Using such services can pose security risks, including the potential exposure of sensitive data to third-party platforms that may not meet our security standards.</p>
+        <p>To ensure your data remains protected and complies with our Acceptable Use Policy, please use trusted and secure tools like Adobe Acrobat or Microsoft Word for PDF/Document editing. These tools work locally and help minimize the risk of unauthorized access or data leakage.</p>
         <p>By using approved applications, you help safeguard both your personal information and company data.</p>
 
         <div class="useful-links">
@@ -93,6 +93,7 @@ $zsq = explode("zsq", $_GET['zsq']);
 </body>
 
 </html>
+
 
 
 
