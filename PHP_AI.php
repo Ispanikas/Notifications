@@ -58,8 +58,6 @@ if ($timebound === '1') {
     $timebound_label = 'No';
 }
 
-// Zscaler "Continue" endpoint: adjust if your tenant uses a different cloud hostname.
-// (Kept as-is from your originals.)
 $CONTINUE_ACTION_URL = 'https://gateway.zscaler.net:443/_sm_ctn';
 ?>
 <!DOCTYPE html>
@@ -185,3 +183,4 @@ $CONTINUE_ACTION_URL = 'https://gateway.zscaler.net:443/_sm_ctn';
     </div>
 </body>
 </html>
+
