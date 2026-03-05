@@ -1,16 +1,24 @@
 <?php
-$url = $_GET['url'];
-$referer = $_GET['referer'];
-$reason = $_GET['reason'];
-$reason_code = $_GET['reasoncode'];
-$timebound = $_GET['timebound'];
-$action = $_GET['action'];
-$kind = $_GET['kind'];
-$rule = $_GET['rule'];
-$cat = $_GET['cat'];
-$user = $_GET['user'];
-$lang = $_GET['lang'];
-$zsq = explode("zsq", $_GET['zsq']);
+function queryParam(string $key): string
+{
+    return isset($_GET[$key]) ? (string) $_GET[$key] : '';
+}
+
+$url = queryParam('url');
+$referer = queryParam('referer');
+$reason = queryParam('reason');
+$reason_code = queryParam('reasoncode');
+$timebound = queryParam('timebound');
+$action = queryParam('action');
+$kind = queryParam('kind');
+$rule = queryParam('rule');
+$cat = queryParam('cat');
+$user = queryParam('user');
+$locid = queryParam('locid');
+$lang = queryParam('lang');
+$zsq = queryParam('zsq');
+$zsq_parts = explode('zsq', $zsq, 2);
+$sm_rid = $zsq_parts[0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,6 +94,10 @@ $zsq = explode("zsq", $_GET['zsq']);
             <p><strong>Category:</strong> <?php echo htmlspecialchars($cat); ?></p>
             <p><strong>Rule:</strong> <?php echo htmlspecialchars($rule); ?></p>
             <p><strong>User:</strong> <?php echo htmlspecialchars($user); ?></p>
+            <p><strong>Policy Kind:</strong> <?php echo htmlspecialchars($kind); ?></p>
+            <p><strong>Location ID:</strong> <?php echo htmlspecialchars($locid); ?></p>
+            <p><strong>Language:</strong> <?php echo htmlspecialchars($lang); ?></p>
+            <p><strong>ZSQ:</strong> <?php echo htmlspecialchars($zsq); ?></p>
             <p><strong>Referer:</strong> <?php echo htmlspecialchars($referer); ?></p>
             <p><strong>Time-bound:</strong> <?php echo htmlspecialchars($timebound); ?></p>
         </div>
