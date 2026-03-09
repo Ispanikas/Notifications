@@ -40,7 +40,7 @@ $locid       = qp('locid');
 $lang        = qp('lang', 'en_US');
 $zsq_raw     = qp('zsq');
 
-// Extract RID from zsq (Zscaler commonly appends a literal "zsq" suffix)
+// Extract RID from zsq (Zscaler commonly appends a literal "zsq" (test) suffix)
 $rid = $zsq_raw;
 if ($rid !== '' && preg_match('/^(.*)zsq$/', $rid, $m)) {
     $rid = $m[1];
@@ -191,5 +191,6 @@ $CONTINUE_ACTION_URL = 'https://gateway.zscaler.net:443/_sm_ctn';
     </div>
 </body>
 </html>
+
 
 
