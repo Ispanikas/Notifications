@@ -64,7 +64,7 @@ $CONTINUE_ACTION_URL = 'https://gateway.zscaler.net:443/_sm_ctn';
 <html lang="<?php echo h($html_lang); ?>">
 <head>
     <meta charset="UTF-8">
-    <!-- Default redirect to TeamViewer after 60s; users can pick AnyDesk or GoTo below -->
+    <!-- Default redirect to TeamViewer after 60s; users can pick GoTo below -->
     <meta http-equiv="refresh" content="60;url=https://www.teamviewer.com/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Restricted – Remote Access Tools</title>
@@ -152,7 +152,6 @@ $CONTINUE_ACTION_URL = 'https://gateway.zscaler.net:443/_sm_ctn';
 
         <div class="grid">
             <a class="btn" href="https://www.teamviewer.com/" target="_blank" rel="noopener">TeamViewer</a>
-            <a class="btn" href="https://anydesk.com/" target="_blank" rel="noopener">AnyDesk</a>
             <a class="btn" href="https://www.goto.com/" target="_blank" rel="noopener">GoTo</a>
         </div>
 
@@ -192,4 +191,5 @@ $CONTINUE_ACTION_URL = 'https://gateway.zscaler.net:443/_sm_ctn';
     </div>
 </body>
 </html>
+
 
