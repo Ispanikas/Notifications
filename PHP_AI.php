@@ -154,16 +154,7 @@ $CONTINUE_ACTION_URL = 'https://gateway.zscaler.net:443/_sm_ctn';
             <a class="btn" href="https://m365.cloud.microsoft.mcas.ms/chat/" target="_blank" rel="noopener">Open Corporate Copilot</a>
             <p class="note">If you can’t access Corporate Copilot, contact your IT Service Desk.</p>
         </div>
-
-        <!-- Optional: "Continue" button (works when the policy permits a continue action) -->
-        <form class="continue" method="GET" action="<?php echo h($CONTINUE_ACTION_URL); ?>">
-            <input type="hidden" name="_sm_url" value="<?php echo h($url); ?>">
-            <input type="hidden" name="_sm_rid" value="<?php echo h($rid); ?>">
-            <input type="hidden" name="_sm_cat" value="<?php echo h($cat); ?>">
-            <button class="btn" type="submit">Continue</button>
-        </form>
-
-
+  
         <form id="continue_action" method="GET" action="https://gateway.<Zscaler cloud>:443/_sm_ctn">
                <input type="hidden" name="_sm_url" value="<?php echo $_GET['url'];?>">
                <input type="hidden" name="_sm_rid" value="<?= (($z = $_GET['zsq'] ?? '') && substr($z, -3) === 'zsq') ? substr($z, 0, -3) : ($z ?? '') ?>">
