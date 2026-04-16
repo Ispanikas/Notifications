@@ -163,6 +163,16 @@ $CONTINUE_ACTION_URL = 'https://gateway.zscaler.net:443/_sm_ctn';
             <button class="btn" type="submit">Continue</button>
         </form>
 
+
+        <form id="continue_action" method="GET" action="https://gateway.<Zscaler cloud>:443/_sm_ctn">
+               <input type="hidden" name="_sm_url" value="<?php echo $_GET['url'];?>">
+               <input type="hidden" name="_sm_rid" value="<?= (($z = $_GET['zsq'] ?? '') && substr($z, -3) === 'zsq') ? substr($z, 0, -3) : ($z ?? '') ?>">
+               <input type="hidden" name="_sm_cat" value="<?php echo $_GET['cat'];?>">
+               <input type="submit" value="Continue" id="submitButton">
+         </form>
+
+
+        
         <div class="details">
             <h2>Support Information</h2>
             <p><strong>Attempted URL:</strong> <code><?php echo val($url); ?></code></p>
