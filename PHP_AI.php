@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE html>https://github.com/Ispanikas/Notifications/blob/main/PHP_AI.php
 <html>
 <head>
    <title>Continue to Zscaler</title>
 </head>
 <body>
-   <h2>Click the button below to continue: ANOTHER CHANGE HERE </h2>
+   <h2>Click the button below to continue: ANOTHER CHANGE HERE AGAIN </h2>
    <a id="continue_link" href="#">Continue</a>
    <script>
        // Read URL parameters
