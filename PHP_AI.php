@@ -4,7 +4,7 @@
    <title>Continue to Zscaler</title>
 </head>
 <body>
-   <h2>Click the button below to continue:</h2>
+   <h2>Click the button below to continue: CHANGE HERE </h2>
    <a id="continue_link" href="#">Continue</a>
    <script>
        // Read URL parameters
