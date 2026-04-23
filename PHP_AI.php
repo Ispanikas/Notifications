@@ -105,6 +105,7 @@ $CONTINUE_ACTION_URL = 'https://gateway.zscloud.net:443/_sm_ctn';
             border: 0;
             cursor: pointer;
             margin-top: 10px;
+            box-sizing: border-box;
         }
         .note {
             color: #c8c8c8;
