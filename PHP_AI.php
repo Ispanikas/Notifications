@@ -16,7 +16,7 @@
        const rid = z.endsWith('zsq') ? z.slice(0, -3) : z;
        // Construct and set the href for the continue link
        document.getElementById('continue_link').href = 
-           `https://gateway.zscaler.net:443/_sm_ctn?_sm_url=${url}&_sm_rid=${rid}&_sm_cat=${cat}`;
+           `https://gateway.zscloud.net:443/_sm_ctn?_sm_url=${url}&_sm_rid=${rid}&_sm_cat=${cat}`;
    </script>
 </body>
 </html>
