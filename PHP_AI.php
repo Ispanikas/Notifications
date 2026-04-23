@@ -95,7 +95,7 @@ $CONTINUE_ACTION_URL = 'https://gateway.zscloud.net:443/_sm_ctn';
         ul { padding-left: 20px; }
         .btn {
             display: block;
-            width: 100%;
+            width: auto;
             text-align: center;
             padding: 12px 16px;
             border-radius: 8px;
